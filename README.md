@@ -94,7 +94,7 @@ java -jar flight-diary-far.jar
 ```
 Of course - the name of the application is bigger as it contains version, but you get the idea.
 
-And... That's it.
+And... That's it. If everything went as planned - you should navigate your browser to http://localhost:8080 and the app is there.
 Note that during boot there will be heavy logs in console/terminal since application initializes all system components and loads data from .csv files into database.
 
 ### Design patterns
