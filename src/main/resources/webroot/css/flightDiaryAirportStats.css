@@ -1,0 +1,293 @@
+.marginedContainer {
+	margin-top: 50px;
+}
+.mapHolder {
+	min-height: 500px;
+	padding: 8px;
+	border: 1px solid blue;
+}
+
+.airportLocationMap {
+	min-height: 300px;
+	padding: 8px;
+}
+
+.routesFromAirportMap {
+	min-height: 300px;
+	padding: 8px;
+}
+
+img[src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png"] {
+    display: none;
+}
+.regionHolder {
+	margin-top: 50px;
+}
+
+.progress {
+	height: 40px !important;
+	border-radius: 0px !important;
+	font-size: 22px;
+}
+.progress-bar {
+	padding-top: 8px;
+}
+.regionText {
+	font-size: 18px;
+}
+.regionTextRight {
+	position: absolute;
+	font-size: 18px;
+	right: 18px;
+	color: navy;
+}
+
+.blue-table-striped>tbody>tr:nth-of-type(odd) {
+   background-color: #e6faff;
+}
+
+.green-table-striped>tbody>tr:nth-of-type(odd) {
+   background-color: #e6fff7;
+}
+
+.hoverAirportHolder {
+	min-height: 100px;
+	max-height: 140px;
+	width: 200px;
+}
+.airportNameLbl {
+	font-size: 20px;
+	color: navy;
+	margin-bottom: 10px;
+}
+
+.additionalInfoLbl {
+	font-size: 14px;
+	color: gray;
+	font-style: italic;
+}
+
+.suggestedAirportsCard {
+	height: 150px;
+	padding: 10px;
+}
+
+.cardContent {
+	border: 1px solid blue;
+	height: 150px;
+}
+
+.card_one {
+	background-image: url("/img/airports/ATL.jpg");
+	background-position: 0px;
+}
+
+.card_two {
+	background-image: url("/img/airports/DXB.jpg");
+	    background-position: 0 -12px;
+}
+
+.card_three {
+	background-image: url("/img/airports/AMS.jpg");
+	background-position: 0px;
+}
+
+.card_four {
+	background-image: url("/img/airports/BEG.jpg");
+	background-position: 0px;
+}
+
+.airportTypeLbl {
+	position: absolute;
+	bottom: -20px;
+    left: 10px;
+	background-color: #ccffcc;
+	color: #737373;
+	height: 35px;
+	padding-top: 7px;
+	padding-right: 10px;
+    padding-left: 10px;
+}
+
+.airportIdHolder {
+	position: absolute;
+	right: 10px;
+	top: 40px;
+	background-color: #ccf5ff;
+	color: #262626;
+	text-align: right;
+	padding-right: 10px;
+    padding-left: 10px;
+    min-width: 125px;
+}
+
+.airportIdCode {
+	font-size: 26px;
+}
+
+.airportIdName {
+	font-style: italic !important;
+	font-size: 14px;
+}
+
+.suggestHolder {
+	margin-bottom: 70px;
+}
+
+.searchBoxTitle {
+	height: 40px;
+	background-color: #ccf5ff;
+	padding-top: 10px;
+    font-style: italic;
+}
+
+.searchBoxTitleGreen {
+	height: 40px;
+	background-color: #ccffcc;
+	padding-top: 10px;
+    font-style: italic;
+    text-align: right;
+}
+
+.searchHolder {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.editBoxSearchHolder {
+	width: 100% !important;
+	height: 40px;
+	padding-left: 0px;
+    padding-right: 0px;
+}
+
+.airportInput {
+	height: 40px;
+	border-radius: 0;
+	font-size: 22px;
+	width: 100%;
+	padding-left: 15px;
+}
+
+.cursorchg {
+	cursor: pointer;
+}
+
+.bodyWithMap {
+	min-height: 1100px;
+}
+
+.bodyWithoutMap {
+	min-height: 700px !important;
+}
+
+.redirectBox {
+	height: 50px;
+	text-align: center;
+	border: 2px lightgreen;
+	width: 100%;
+}
+
+.airportPersonalIdCard {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.leftAirportIdHolder {
+	min-height: 50px;
+	min-width: 200px;
+	position: absolute;
+	top: 10px;
+	background-color: blue;
+	color: white;
+}
+
+.airportIdCardColName {
+	font-size: 16px;
+	font-style: italic;
+	margin-left: 10px;
+	margin-right: 10px;
+	float: left;
+}
+
+.airportIdCardColValue {
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+}
+
+.borderless td, .borderless th {
+    border: none;
+}
+
+.noBorders {
+	border: none !important;
+}
+
+.airportName {
+	width: 100%;
+	text-align: center;
+	font-size: 22px;
+	font-style: italic;
+}
+
+.singleStatsBoxHolder {
+	padding: 5px;
+	min-height: 100px;
+}
+
+.singleStatsBox {
+	height: 100px;
+	border: 2px solid lightgreen;
+}
+.singleStatsBoxBlue {
+	height: 100px;
+	border: 2px solid lightblue;
+}
+
+.singleStatsBoxText {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	background: lightgreen;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.singleStatsBoxTextBlue {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	background: lightBlue;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.singleStatsBoxValue {
+	text-align: center;
+    width: 100%;
+    font-size: 42px;
+    position: absolute;
+    top: 30px;
+}
+
+.singleStatsProfileHolder {
+	position: absolute;
+	top: 42px;
+	text-align: center;
+	color: lightgreen;
+	width: 100%;
+}
+
+.singleStatsProfileHolderBlue {
+	position: absolute;
+	top: 42px;
+	text-align: center;
+	width: 90%;
+    font-size: 32px;
+    color: lightblue;
+}
+
+.singleStatsProfileLink {
+	font-size: 14px;
+}

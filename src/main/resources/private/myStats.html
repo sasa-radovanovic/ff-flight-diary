@@ -1,0 +1,192 @@
+<div ng-include="'topNavigation.html'"></div>
+
+
+<div class="container">
+	<div class="col-lg-12">
+		<h3>Your overview</h3>
+		<hr>
+		<div class=col-lg-12">
+			<div id="map-holder" class="mapHolder">
+				<div class="loader">Loading...</div>
+			</div>
+		</div>
+		<div class="col-lg-12 col-sm-12 col-md-12 boxHolder">
+			<div class="col-lg-4 col-sm-12 col-md-4">
+				<div class="card transition">
+					<h2 class="h2_card transition">{{myFlights.length}}</h2>
+					<p class="p_card">Total Flights taken</p>
+					<div class="cta-container transition">
+						<a href="/private/#/newFlight" class="cta">Add another one</a>
+					</div>
+					<div class="card_circle transition"></div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-12 col-md-4">
+				<div class="card transition">
+					<h2 class="h2_card transition">{{totalDistance}} km</h2>
+					<p class="p_card">Total Kilometers traveled</p>
+					<div class="cta-container transition">
+						<a href="/private/#" class="cta">Show all flights</a>
+					</div>
+					<div class="card_circle transition"></div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-12 col-md-4">
+				<div class="card transition">
+					<h2 class="h2_card transition">{{airportsVisited}}</h2>
+					<p class="p_card">Total airports visited</p>
+					<div class="cta-container transition">
+						<a href="/#/airports" class="cta">All airports stats</a>
+					</div>
+					<div class="card_circle transition"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="col-lg-12 col-sm-12 col-md-12 barChartHolder">
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<h4 class="pull-left">Airport usage</h4>
+			<div class="chartHolder">
+				<ul class="chart">
+					<li ng-repeat="airport in airportsOnGraph" class="bar teal"
+						ng-style="{'height': '{{airport.value}}%', 'left' : '{{airport.padd}}%'}"
+						title="{{airport.value}}">
+						<div class="percent"
+							ng-class="{'repositionPercentText' : airport.value <= 10 }">
+							{{airport.value}}<span>%</span>
+						</div>
+						<div class="skill">{{airport.code}}</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<h4 class="pull-right">Airline usage</h4>
+			<div class="chartHolder">
+				<ul class="chart">
+					<li ng-repeat="airline in airlinesOnGraph" class="bar lime"
+						ng-style="{'height': '{{airline.value}}%', 'left' : '{{airline.padd}}%'}"
+						title="{{airline.value}}">
+						<div class="percent"
+							ng-class="{'repositionPercentText' : airline.value <= 10 }">
+							{{airline.value}}<span>%</span>
+						</div>
+						<div class="skill">{{airline.code}}</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div
+		class="col-lg-12 col-sm-12 col-md-12 regionalDistributionHolder barChartHolder">
+		<div class="col-lg-6 col-md-6 com-sm-6">
+			<h4 class="pull-left">Average flight rating</h4>
+			<uib-rating class="statsStars" ng-model="totalRating" max="max"
+				data-readonly="isReadonly" read-only="isReadonly"
+				on-hover="hoveringOver(value)" on-leave="overStar = null"
+				aria-labelledby="default-rating"></uib-rating>
+		</div>
+		<div class="col-lg-6 col-md-6 com-sm-6">
+			<h4 class="pull-right">Regional distribution</h4>
+			<div class="pieChartHolder regionalPieChartHolder">
+				<div ui-chart="regionsGraph" chart-options="myChartOpts"></div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="col-lg-12 col-md-12 col-sm-12 barChartHolder">
+		<h4>Flight class distribution</h4>
+		<uib-progress> <uib-bar
+			ng-repeat="class in chartClasses track by $index" value="class.value"
+			type="{{class.type}}" data-toggle="tooltip" title="{{class.name}}"> 
+			<span>
+			<strong> <i ng-show="class.name=='Economy'"
+					class="fa fa-star-o purposeFont" aria-hidden="true"></i> <i
+					ng-show="class.name=='Business'"
+					class="fa fa-star-half-o purposeFont" aria-hidden="true"></i> <i
+					ng-show="class.name=='First'"
+					class="fa fa-star purposeFont" aria-hidden="true"></i>
+			</strong>
+			</span> <span
+			ng-hide="class.value < 10">{{class.value}}%</span></uib-bar></uib-progress>
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 barChartHolder">
+		<h4>Ticket source</h4>
+		<uib-progress> <uib-bar
+			ng-repeat="source in chartSources track by $index"
+			value="source.value" type="{{source.type}}" data-toggle="tooltip" title="{{source.name}}"> <span>
+				<strong> <i ng-show="source.name=='Airline'"
+					class="fa fa-plane purposeFont" aria-hidden="true"></i> <i
+					ng-show="source.name=='Agent'"
+					class="fa fa-money purposeFont" aria-hidden="true"></i>
+			</strong>
+			
+			</span> <span ng-hide="source.value < 10">{{source.value}}%</span></uib-bar></uib-progress>
+	</div>
+	<hr>
+	<hr>
+	<div class="col-lg-12 col-md-12 col-sm-12 barChartHolder">
+		<div class="col-lg-6 col-md-12 col-sm-12">
+			<h4>Flight distribution by year</h4>
+			<div class="pieChartHolder">
+				<div style="" ui-chart="yearsGraph" chart-options="myChartOpts"></div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-12 col-sm-12">
+			<h4 class="pull-right">Flight distribution by month</h4>
+			<div class="chartHolder">
+				<ul class="chart">
+					<li ng-repeat="month in monthGraph" class="bar teal"
+						ng-style="{'height': '{{month.value}}%', 'left' : '{{month.padd}}%'}"
+						title="{{airport.value}}">
+						<div class="percent"
+							ng-class="{'repositionPercentText' : month.value <= 10 }">
+							{{month.valueRaw}}<span></span>
+						</div>
+						<div class="skill">{{month.code}}</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="col-lg-12 col-md-12 col-sm-12 barChartHolder">
+		<h4 class="pull-left">Flight distribution by take-off time</h4>
+		<div class="col-lg-12 col-md-12 col-sm-12 purposes">
+			<div class="col-lg-4 col-md-4 col-sm-12 timeDistributionHolder">
+				<div class="digClock">00:00 - 12:00</div>
+				<div class="timeValueHolder">{{morningFlights}} %</div>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12 timeDistributionHolder">
+				<div class="digClock">12:00 - 18:00</div>
+				<div class="timeValueHolder">{{afternoonFlights}} %</div>	
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12 timeDistributionHolder">
+				<div class="digClock">18:00 - 00:00</div>
+				<div class="timeValueHolder">{{eveningFlights}} %</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="col-lg-12 col-md-12 col-sm-12 barChartHolder">
+		<h4 class="pull-left">Flights by purpose</h4>
+		<div class="col-lg-12 col-md-12 col-sm-12 purposes">
+			<uib-progress> <uib-bar
+				ng-repeat="purpose in chartPurposes track by $index"
+				value="purpose.value" type="{{purpose.type}}" data-toggle="tooltip" title="{{purpose.name}}"> <span>
+				<strong> <i ng-show="purpose.name=='Leasure'"
+					class="fa fa-sun-o purposeFont" aria-hidden="true"></i> <i
+					ng-show="purpose.name=='Business'"
+					class="fa fa-suitcase purposeFont" aria-hidden="true"></i> <i
+					ng-show="purpose.name=='Family Visit'"
+					class="fa fa-users purposeFont" aria-hidden="true"></i>
+			</strong>
+			</span> <span ng-hide="purpose.value < 10">{{purpose.value}}% </span> </uib-bar> </uib-progress>
+
+		</div>
+	</div>
+
+
+</div>

@@ -1,0 +1,46 @@
+<div ng-include="'topNavigation.html'"></div>
+
+<div class="container marginedContainer">
+	<h2>
+		Profile <small>{{username}}</small>
+	</h2>
+
+	<div class=col-lg-12">
+		<div id="map-holder" class="mapHolder">
+			<div class="loader">Loading...</div>
+		</div>
+	</div>
+
+	<div class="publicProfileCardsHolder col-lg-12 col-md-12 col-sm-12">
+		<div class="publicProfileCard col-lg-3 col-md-6 col-sm-12">
+			<div class="publicProfileCardContent">
+				<div class="publicProfileCardContentHeader">Total flights</div>
+				<div class="publicProfileCardContentValue">{{flights.length}}
+				</div>
+			</div>
+		</div>
+		<div class="publicProfileCard col-lg-3 col-md-6 col-sm-12">
+			<div class="publicProfileCardContent">
+				<div class="publicProfileCardContentHeader">Total distance</div>
+				<div class="publicProfileCardContentValue">{{totalDistance}} km
+				</div>
+			</div>
+		</div>
+		<div class="publicProfileCard col-lg-3 col-md-6 col-sm-12">
+			<div class="publicProfileCardContent">
+				<div class="publicProfileCardContentHeader">Airports visited</div>
+				<div class="publicProfileCardContentValue">{{distinctAirports}}
+				</div>
+			</div>
+		</div>
+		<div class="publicProfileCard col-lg-3 col-md-6 col-sm-12">
+			<div class="publicProfileCardContent">
+				<div class="publicProfileCardContentHeader">Airlines flown on</div>
+				<div class="publicProfileCardContentValue">{{distinctAirlines}}</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div ng-include="'mainNavigation.html'"></div>

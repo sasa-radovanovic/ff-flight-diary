@@ -1,0 +1,6 @@
+{
+	"http.port" : 80,
+	"newDB" : true,
+	"fillDB" : true,
+	"email" : "sasa1kg@yahoo.com"
+}

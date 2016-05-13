@@ -1,0 +1,69 @@
+<div ng-include="'topNavigation.html'"></div>
+
+<div class="container marginedContainer">
+	<h2>
+		User statistics
+	</h2>
+
+	<div class="col-lg-12 col-md-12 col-sm-12 searchHolder">
+		<div class="col-lg-6 col-md-12 col-sm-12 searchBoxTitle">
+			Find a user by username
+		</div>
+		<div class="col-lg-6 col-md-12 col-sm-12 searchBoxTitleGreen">
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 typeahead-demo editBoxSearchHolder">
+			<input type="text" ng-model="usersSearch" placeholder="Type user's username"
+								ng-change="fetchAutoSuggestionSearch()"
+								uib-typeahead="user as user.username for user in autoSuggestionUsers"
+								typeahead-popup-template-url="customPopupTemplate.html"
+								class="airportInput">
+		</div>
+	</div>
+
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<h4>Top flyers</h4>
+			<div class="col-lg-4 col-md-6 col-sm-12 userCardHolder" ng-repeat="user in topUsers">
+				<div class="userCard">
+					<div class="userCardTopContent">
+						<a class="userCardTopLink" href="#/profile/{{user.username}}"><span class="glyphicon glyphicon-user"></span> {{user.username}}</a>
+					</div>
+					<div class="userCardBottomContent">
+						<a><span class="glyphicon glyphicon-globe"></span> {{user.count}} flights</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12 userCardHolderTotal">
+				<div class="userCardTotal">
+					<img src="img/p2p.png" class="totalUsersIcon"/>
+					<div class="userCardTopContentTotal">
+						<p>Total diaries</p>
+					</div>
+					<div class="userCardBottomContentTotal">
+						<p>{{totalUsersCount}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 centeredAlert">
+			<div class="alert alert-info">
+				<a href="#/register"><strong> Join in and create your own diary. Register today!</strong></a>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div ng-include="'mainNavigation.html'"></div>
+
+
+    <script type="text/ng-template" id="customPopupTemplate.html">
+  	<div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     style="display: block;"
+     ng-show="isOpen() && !moveInProgress"
+     aria-hidden="{{!isOpen()}}">
+    <p class="message">select user from drop down.</p>
+	<p  class="cursorchg suggestionChoice" ng-click="selectMatch($index)" role="option" id="{{::match.id}}" index="$index" match="match" ng-repeat="match in matches"><span class="glyphicon glyphicon-user userGlyph" width="24px"></span>{{match.model.username}}</p>
+  	</div>
+	</script>

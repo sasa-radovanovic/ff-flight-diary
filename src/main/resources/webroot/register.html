@@ -1,0 +1,71 @@
+<div ng-include="'topNavigation.html'"></div>
+
+<div class="container">
+	<div
+		class="col-md-offset-2 col-md-8 col-lg-offset-4 col-lg-4 col-sm-offset-1 col-sm-10 regHolder">
+		<div>
+
+			<div class="modal-header">
+				<h1 class="text-center">Create new account</h1>
+			</div>
+			<div class="modal-body">
+				<form class="form col-md-12 center-block">
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="Email" ng-model="mail">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="Username" ng-model="username">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control input-lg"
+							placeholder="Password" ng-model="password">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control input-lg"
+							placeholder="Repeat password" ng-model="passwordRepeat">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary btn-lg btn-block"
+							ng-click="register()">Register</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="col-md-offset-2 col-md-8 col-lg-offset-4 col-lg-4 col-sm-offset-1 col-sm-10 alertHolder">
+		<div class="alert alert-danger flight-alert" ng-if="fieldsError">
+			<strong>All fields are required!</strong>
+		</div>
+		<div class="alert alert-danger flight-alert" ng-if="passwordError">
+			<strong>Entered passwords do not match!</strong>
+		</div>
+	</div>
+
+	<img class="luggage-tags" src="img/luggage-tags-2.jpg"></img>
+
+
+	<!-- Modal -->
+	<script type="text/ng-template" id="regSuccessModal.html">
+        <div>
+            <div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Registration</h4>
+                </div>
+                <div class="modal-body">
+                    Account created successfully. Please check your inbox for activation mail.
+                </div>
+                <div class="modal-footer">
+                    <a type="button" class="btn btn-primary" ng-click="redirect()"> Back to the main page</a>
+                </div>
+            </div>
+
+        </div>
+    </script>
+
+</div>
+
+<div ng-include="'mainNavigation.html'"></div>

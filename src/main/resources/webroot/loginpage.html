@@ -1,0 +1,86 @@
+<nav class="navbar navbar-default navbar-top-diary">
+	<div class="container-fluid">
+		<div class="navbar-header navbar-top-diary-header">
+			<a class="navbar-brand" href="#/"><img class="topLogo"
+				src="img/logo.PNG"></img></a>
+		</div>
+	</div>
+</nav>
+<!-- action="/loginhandler" -->
+
+<div class="container">
+	<div
+		class="col-md-offset-2 col-md-8 col-lg-offset-4 col-lg-4 col-sm-offset-1 col-sm-10 regHolder">
+		<div>
+
+			<div class="modal-header">
+				<h1 class="text-center">Log in</h1>
+			</div>
+			<div class="modal-body">
+				<form  method="post" ng-submit="submit()">
+					<div class="form-group">
+						<input class="form-control input-lg" placeholder="Username"
+							type="text" name="username" ng-model="formData.username" />
+					</div>
+					<div class="form-group">
+						<input class="form-control input-lg" placeholder="Password"
+							type="password" name="password" ng-model="formData.password"/>
+					</div>
+					<div class="form-group">
+						<input class="btn btn-primary btn-lg btn-block" type="submit"
+							value="Log In" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="alert alert-danger alertHolderReg" ng-if="loginError">
+			<strong>Invalid credentials</strong>
+		</div>
+		<div class="alert alert-info alertHolderReg">
+			<a class="cursorchg" href="#/register">Don't have an account yet?</a>
+		</div>
+	</div>
+
+	<img class="luggage-tags" src="img/luggage-tags-2.jpg"></img>
+
+
+</div>
+
+<div ng-include="'mainNavigation.html'"></div>
+
+
+
+
+
+
+
+
+
+<!--<html>
+<head>
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+</head>
+<body>
+	<h2>Please login</h2>
+	<br>
+
+	<br> (Username is 'tim', password is 'sausages')
+	<br>
+	<br>
+
+	<form action="/loginhandler" method="post">
+		<div>
+			<label>Username:</label> <input type="text" name="username" />
+		</div>
+		<div>
+			<label>Password:</label> <input type="password" name="password" />
+		</div>
+		<div>
+			<input type="submit" value="Log In" />
+		</div>
+	</form>
+</body>
+</html>-->

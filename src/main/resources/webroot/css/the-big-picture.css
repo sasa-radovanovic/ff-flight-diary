@@ -1,0 +1,40 @@
+/*!
+ * Start Bootstrap - The Big Picture HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background: none;
+}
+
+
+.full {
+  /*position: absolute;
+  top: 0px !important;
+  min-height: 100% !important;
+  min-width: 100% !important;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+}
+
+.pic1 {
+	/*background: url(http://nahj.org/wp-content/uploads/2014/03/United-Airlines-toll-free-number.jpg) no-repeat center center fixed; */
+}
+
+.pic2 {
+	width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    bottom: 0px;
+	background: url(https://img1.etsystatic.com/065/1/7219911/il_fullxfull.756342809_jx50.jpg) no-repeat center center fixed; 
+}
+
+.pic3 {
+	background: url(http://nahj.org/wp-content/uploads/2014/03/United-Airlines-toll-free-number.jpg) no-repeat center center fixed; 
+}

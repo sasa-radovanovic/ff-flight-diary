@@ -1,0 +1,98 @@
+.typeahead-demo {
+	width: 215px;
+	float: left;
+}
+.typeahead-demo-small {
+	width: 89px;
+	float: left;
+}
+.typeahead-demo-middle {
+	width: 115px;
+	float: left;
+}
+.typeahead-demo .custom-popup-wrapper {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 2000;
+	display: none;
+	background-color: white;
+	border: 1px solid #868686;
+	min-width: 300px;
+}
+
+.typeahead-demo .custom-popup-wrapper>.message {
+	padding: 10px 20px;
+	border-bottom: 1px solid #ddd;
+	color: #868686;
+}
+
+.typeahead-demo .custom-popup-wrapper>.dropdown-menu {
+	position: static;
+	float: none;
+	display: block;
+	min-width: 260px;
+	background-color: transparent;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: black;
+}
+
+.typeahead-demo-small .custom-popup-wrapper {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 2000;
+	display: none;
+	background-color: white;
+	border: 1px solid #868686;
+	min-width: 300px;
+}
+
+.typeahead-demo-small .custom-popup-wrapper>.message {
+	padding: 10px 20px;
+	border-bottom: 1px solid #ddd;
+	color: #868686;
+}
+
+.typeahead-demo-small .custom-popup-wrapper>.dropdown-menu {
+	position: static;
+	float: none;
+	display: block;
+	min-width: 260px;
+	background-color: transparent;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: black;
+}
+
+.typeahead-demo-middle .custom-popup-wrapper {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 2000;
+	display: none;
+	background-color: white;
+	border: 1px solid #868686;
+	min-width: 300px;
+}
+
+.typeahead-demo-middle .custom-popup-wrapper>.message {
+	padding: 10px 20px;
+	border-bottom: 1px solid #ddd;
+	color: #868686;
+}
+
+.typeahead-demo-middle .custom-popup-wrapper>.dropdown-menu {
+	position: static;
+	float: none;
+	display: block;
+	min-width: 260px;
+	background-color: transparent;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: black;
+}

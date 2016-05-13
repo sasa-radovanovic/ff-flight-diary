@@ -1,0 +1,394 @@
+@font-face {
+	font-family: 'dot_digital';
+	src: url('../fonts/enhanced_dot_digital-7.ttf');
+}
+
+.airportNameLabel {
+	font-family: 'dot_digital';
+	font-size: 18px;
+	padding-left: 46px;
+}
+
+.lblHolder {
+	height: 20px !important;
+}
+
+.newFlightContainer {
+	border-radius: 15px;
+	border: 2px solid green;
+	height: 300px;
+	width: 1050px;
+	display: inline-block;
+}
+
+.leftSideNewFlightContainer {
+	height: 270px;
+	width: 750px;
+	float: left;
+}
+
+.rightSideNewFlightContainer {
+	height: 295px;
+	width: 250px;
+	float: left;
+	border-left: 3px solid black;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: dotted;
+}
+
+.leftSideLogoHolder {
+	height: 270px;
+	width: 120px;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
+	float: left;
+}
+
+.leftSideLogo {
+	max-height: 100px;
+	max-width: 100px;
+	margin-top: 20px;
+}
+
+.leftSideMainContent {
+	width: 250px;
+	height: 270px;
+	float: left;
+}
+
+.leftSideAddContent {
+	width: 150px;
+	height: 270px;
+	float: left;
+	margin-left: 15px;
+	margin-top: 35px !important;
+}
+
+.leftSideLastContent {
+	width: 200px;
+	height: 270px;
+	float: left;
+	margin-left: 15px;
+	margin-top: 7px;
+}
+
+.flightRatingHolder {
+	position: absolute;
+	bottom: 25px;
+	width: 250px;
+	height: 100px;
+}
+
+.ratingStars {
+	margin-left: 40px;
+}
+
+.sourceBtn {
+	width: 140px !important;
+}
+
+.ticketSourceHolder {
+	margin-right: -48px;
+	margin-top: 10px;
+	padding-top: 10px;
+	height: 100px;
+}
+
+.flightRatingHolder .glyphicon-star {
+	color: yellow !important;
+	font-size: 30px;
+}
+
+.flightRatingHolder .glyphicon-star-empty {
+	color: black !important;
+	font-size: 30px;
+}
+
+.timepickAllign {
+	margin-top: -1px;
+}
+
+.uib-time input {
+	width: 60px !important;
+	height: 35px !important;
+	border-radius: 0px !important;
+	border: none !important;
+	font-size: 18px !important;
+	color: yellow !important;
+	background: black !important;
+}
+
+.dateBtn {
+	width: 35px;
+	height: 35px;
+	background: yellow;
+}
+
+.dateInput {
+	background: black;
+	color: yellow;
+	font-size: 18px;
+	height: 35px;
+	border: none;
+}
+
+.clockIcon {
+	width: 35px;
+	height: 35px;
+}
+
+.tabHeadImgDep {
+	width: 35px;
+	height: 35px;
+	color: black;
+	float: left;
+}
+
+.tabHeadImgAirHolder {
+	width: 35px;
+	height: 35px;
+	background-color: yellow;
+	float: left;
+	padding: 5px;
+}
+
+.tabHeadImgAirType {
+	width: 35px;
+	height: 35px;
+	background-color: yellow;
+	float: left;
+}
+
+.tabHeadImgAir {
+	width: 25px;
+	height: 25px;
+	background-color: transparent;
+}
+
+.tabHeadImgArr {
+	width: 35px;
+	height: 35px;
+	color: black;
+	float: left;
+}
+
+.tabHead {
+	border-radius: 0px !important;
+	color: black;
+	width: 250px;
+	height: 35px;
+	font-size: 18px;
+	margin-top: 5px;
+	background: yellow;
+}
+
+.extendedAirport {
+	width: 250px;
+	height: 85px;
+	min-height: 70px;
+}
+
+.top20 {
+	margin-top: 30px;
+}
+
+.top40 {
+	margin-top: 40px;
+}
+
+.top55 {
+	margin-top: 55px;
+}
+
+.cursorchg {
+	cursor: pointer !important;
+}
+
+.suggestionChoice {
+	font-size: 14px !important;
+	height: 40px;
+	padding-top: 7px;
+	text-overflow: ellipsis;
+}
+
+.suggestionChoice:HOVER {
+	background-color: #f5f5f5;
+}
+
+.suggestionContent {
+	display: inline;
+	font-size: 14px !important;
+	height: 40px;
+	padding-top: 7px;
+	text-overflow: ellipsis;
+}
+
+.suggestionContent:HOVER {
+	background-color: #f5f5f5;
+}
+
+.airportInputField {
+	background: transparent;
+	border: none;
+	width: 215px;
+	padding-left: 10px;
+	height: 35px;
+}
+
+.leftBarCode {
+	width: 55px;
+	height: 160px;
+	margin-left: 25px;
+}
+
+.sampleBoardingPassCode {
+	position: absolute;
+	bottom: -15px;
+	right: 100px;
+	z-index: 0;
+}
+
+.classSelectionHolder {
+	position: absolute;
+	bottom: 25px;
+	right: 505px;
+	width: 500px;
+	height: 60px;
+}
+
+.purposeSelectionHolder {
+	position: absolute;
+	bottom: 25px;
+	right: 205px;
+	width: 500px;
+	height: 60px;
+}
+
+.classBtn {
+	width: 80px;
+	height: 80px;
+	background-color: #ffffb3;
+	color: #b3b3b3;
+	border-radius: 0px;
+}
+
+.activeClassBtn {
+	width: 120px;
+	height: 80px;
+	background-color: black;
+	color: yellow;
+}
+
+.activeClassBtn:HOVER {
+	color: yellow;
+}
+
+.airplaneTypeHolder {
+	margin-top: 27px;
+	width: 124px;
+	background-color: black;
+}
+
+.airlineTypeHolder {
+	margin-top: 55px;
+	width: 150px;
+	background-color: black;
+}
+
+.codeLabel {
+	height: 35px;
+	font-family: 'dot_digital';
+	z-index: 0;
+}
+
+.experienceLabel {
+	height: 35px;
+	font-family: 'dot_digital';
+	z-index: 0;
+	font-size: 20px;
+	position: relative;
+	right: -25px;
+	bottom: -13px;
+}
+
+.airplaneTypeInput {
+	background: transparent;
+	border: none;
+	width: 89px;
+	padding-left: 10px;
+	height: 35px;
+	color: yellow;
+}
+
+.airlineTypeInput {
+	background: transparent;
+	border: none;
+	width: 115px;
+	padding-left: 10px;
+	height: 35px;
+	color: yellow;
+}
+.lowerCommandHolder {
+	margin-top: 100px;
+}
+.addFlightBtn {
+	background-color: black;
+	color: yellow;
+	width: 200px;
+    height: 80px;
+}
+.addFlightSpan {
+	width: 30px;
+	height: 30px;
+}
+.gateIcon {
+	margin-left: -120px;
+}
+
+.addFlightLabel {
+	width: 80px;
+    position: relative;
+    right: -80px;
+    bottom: 43px;
+}
+
+.flightTableCell {
+	font-family: 'dot_digital';
+	color: yellow;
+	background: black;
+	font-size: 22px;
+}
+
+.flightTableIcon {
+	padding-top: 14px !important;
+}
+
+.flightTableCellHeader {
+	font-size: 22px;
+	color: #e6e6e6;
+}
+.userAddedFlight {
+	font-size: 18px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 3px;
+	border-bottom: 1px solid black;
+	padding-top: 3px;
+    padding-bottom: 3px;
+    color: white;
+}
+.userAddedFlightButton {
+	font-size: 16px;
+}
+.logoutBtn {
+	margin-left: 20px;
+}
+.classIcon {
+	color: green;
+    float: left;
+    margin-right: 10px;
+}

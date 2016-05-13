@@ -1,0 +1,62 @@
+<html lang="en" ng-app="flightDiaryApp" autoscroll="true">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Personal FLight Diary">
+<meta name="author" content="Sasa Radovanovic">
+    
+<title>Flight Diary</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/flightDiary.css" rel="stylesheet">
+<link href="css/flightDiaryAirportStats.css" rel="stylesheet">
+<link href="css/flightDiaryGeneralStats.css" rel="stylesheet">
+<link href="css/flightDiaryBarChart.css" rel="stylesheet">
+<link href="css/flightDiaryLoader.css" rel="stylesheet">
+<link href="css/the-big-picture.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/typeaheadFlightDiary.css" rel="stylesheet">
+</head>
+
+
+
+<body>
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-touch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-cookies.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-sanitize.js"></script>
+	
+<script src="js/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=drawing"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+<script src="application-js/flightDiaryApp.js"></script>
+<script src="application-js/controllers/registerCtrl.js"></script>
+<script src="application-js/controllers/activateCtrl.js"></script>
+<script src="application-js/controllers/profileCtrl.js"></script>
+<script src="application-js/controllers/airportsStatsCtrl.js"></script>
+<script src="application-js/controllers/profileCtrl.js"></script>
+<script src="application-js/controllers/generalStatsCtrl.js"></script>
+<script src="application-js/controllers/usersStatsCtrl.js"></script>
+<script src="application-js/controllers/loginCtrl.js"></script>
+
+<div ng-view class="base"></div>
+
+
+</body>
+</html>

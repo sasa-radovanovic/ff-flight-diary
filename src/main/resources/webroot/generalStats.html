@@ -1,0 +1,405 @@
+<div ng-include="'topNavigation.html'"></div>
+
+<div class="container marginedContainer">
+	<h2>
+		General statistics <small>By airlines and airplane types</small>
+	</h2>
+
+
+	<div class="col-lg-12 col-md-12 col-sm-12" ng-if="loading">
+		<div class="loader">Loading...</div>
+	</div>
+
+	<div class="col-lg-12 col-md-12 col-sm-12 tabHolder">
+		<div class="col-lg-6 col-sm-12 col-md-6 full-width-btn-holder">
+			<btn class="btn btn-lg btn-info full-width-btn">
+				Search airline statistics
+			</btn>
+		</div>
+		<div class="col-lg-6 col-sm-12 col-md-6 full-width-btn-holder">
+			<btn class="btn btn-lg btn-success full-width-btn">
+				Search airplane type statistics
+			</btn>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 full-width-btn-holder">
+				<div class="col-lg-6 col-md-6 col-sm-12 searchHolder airlineSrch">
+					<div
+						class="col-lg-12 col-md-12 col-sm-12 typeahead-demo editBoxSearchHolder">
+						<input class="airportInput" type="text" ng-model="airlineInp"
+							placeholder="Type airline name or code"
+							ng-change="fetchAutoSuggestionAirlines()"
+							uib-typeahead="airline as airline.airline_iata_code for airline in autoSuggestionAirlines"
+							typeahead-popup-template-url="customPopupTemplateAirlines.html"
+							class="airlineTypeInput">
+					</div>
+				</div>
+	
+				<div class="col-lg-6 col-md-6 col-sm-12 searchHolder airplaneSrch">
+					<div
+						class="col-lg-12 col-md-12 col-sm-12 typeahead-demo editBoxSearchHolder">
+						<input class="airportInput" type="text" ng-model="airplaneTypeInp"
+							placeholder="Type airplane type code or manufacturer"
+							ng-change="fetchAutoSuggestionAirplaneTypes()"
+							uib-typeahead="airplaneType as airplaneType.type_code for airplaneType in autoSuggestionAirplaneTypes"
+							typeahead-popup-template-url="customPopupTemplateAirplanes.html"
+							class="airplaneTypeInput">
+					</div>
+				</div>
+		</div>
+	</div>
+
+
+	<div class="col-lg-12 col-md-12 col-sm-12 regionHolder suggestHolder">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<h4>Suggested airplane types statistics</h4>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+			<div class="cardContent card_one_airplane">
+				<div class="pull-right airportIdHolder">
+					<a class="airportIdCode cursorchg"
+						ng-click="loadAndOpenAirplaneTypeData('388')">A380</a>
+					<p class="airportIdName">Airbus A380</p>
+				</div>
+				<p class="airportTypeLbl">The largest passenger airplane</p>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+			<div class="cardContent card_two_airplane">
+				<div class="pull-right airportIdHolder">
+					<a class="airportIdCode cursorchg"
+						ng-click="loadAndOpenAirplaneTypeData('738')">B737</a>
+					<p class="airportIdName">Boeing 737-800</p>
+				</div>
+				<p class="airportTypeLbl">Latest version of the best selling
+					type</p>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+			<div class="cardContent card_three_airplane">
+				<div class="pull-right airportIdHolder">
+					<a class="airportIdCode cursorchg"
+						ng-click="loadAndOpenAirplaneTypeData('E90')">E190</a>
+					<p class="airportIdName">Embraer E-190</p>
+				</div>
+				<p class="airportTypeLbl">The most popular regional jet</p>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+			<div class="cardContent card_four_airplane">
+				<div class="pull-right airportIdHolder">
+					<a class="airportIdCode cursorchg"
+						ng-click="loadAndOpenAirplaneTypeData('SU1')">SU1</a>
+					<p class="airportIdName">Sukhoi Superjet 100</p>
+				</div>
+				<p class="airportTypeLbl">Russian regional jet</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-lg-12 col-md-12 col-sm-12 barChartHolder"
+		ng-if="!loading && airplaneTypesExist">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<h4 class="pull-left">Top 5 used airline types</h4>
+		</div>
+		<div class="chartHolder">
+			<ul class="chart">
+				<li ng-repeat="airplaneType in generalStats.airplaneTypes"
+					class="bar salmon"
+					ng-style="{'height': '{{airplaneType.perc}}%', 'left' : '{{airplaneType.padd}}%'}"
+					title="{{airplaneType.count}}" popover-placement="right"
+					uib-popover-template="dynamicPopoverAirplaneType.templateUrl"
+					popover-title="{{airplaneType.airplane_code}}"
+					popover-trigger="mouseenter"
+					ng-mouseenter="hoveredAirplaneType(airplaneType)">
+					<div class="percent"
+						ng-class="{'repositionPercentText' : airplaneType.perc <= 12 }">
+						{{airplaneType.count}}</div>
+					<div class="skill">{{airplaneType.airplane_code}}</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="col-lg-12 col-md-12 col-sm-12 regionHolder suggestHolder">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<h4>Suggested airlines statistics</h4>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+			<div class="cardContent card_one_airline">
+				<div class="pull-right airportIdHolder">
+					<a class="airportIdCode cursorchg"
+						ng-click="loadAndOpenAirlinetData('QR')">QR</a>
+					<p class="airportIdName">Qatar Airways</p>
+				</div>
+				<p class="airportTypeLbl">2015 Skytrax World's best airline</p>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+			<div class="cardContent card_two_airline">
+				<div class="pull-right airportIdHolder">
+					<a class="airportIdCode cursorchg"
+						ng-click="loadAndOpenAirlinetData('AK')">AK</a>
+					<p class="airportIdName">Air Asia</p>
+				</div>
+				<p class="airportTypeLbl">2015 world's best LCC</p>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+			<div class="cardContent card_three_airline">
+				<div class="pull-right airportIdHolder">
+					<a class="airportIdCode cursorchg"
+						ng-click="loadAndOpenAirlinetData('AA')">AA</a>
+					<p class="airportIdName">American Airlines</p>
+				</div>
+				<p class="airportTypeLbl">The largest fleet in the world</p>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+			<div class="cardContent card_four_airline">
+				<div class="pull-right airportIdHolder">
+					<a class="airportIdCode cursorchg"
+						ng-click="loadAndOpenAirlinetData('TK')">TK</a>
+					<p class="airportIdName">Turkish Airlines</p>
+				</div>
+				<p class="airportTypeLbl">The most countries served</p>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-lg-12 col-md-12 col-sm-12 barChartHolder"
+		ng-if="!loading && airlinesExist">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<h4 class="pull-left">Top 5 used airlines</h4>
+		</div>
+		<div class="chartHolder">
+			<ul class="chart">
+				<li ng-repeat="airline in generalStats.airlines" class="bar teal"
+					ng-style="{'height': '{{airline.perc}}%', 'left' : '{{airline.padd}}%'}"
+					title="{{airline.count}}" popover-placement="right"
+					uib-popover-template="dynamicPopoverAirline.templateUrl"
+					popover-title="{{airline.airline_code}}"
+					popover-trigger="mouseenter"
+					ng-mouseenter="hoveredAirline(airline)">
+					<div class="percent"
+						ng-class="{'repositionPercentText' : airline.perc < 12 }">
+						{{airline.count}}</div>
+					<div class="skill">{{airline.airline_code}}</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+<div ng-include="'mainNavigation.html'"></div>
+
+<script type="text/ng-template" id="customPopupTemplateAirplanes.html">
+  	<div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     style="display: block;"
+     ng-show="isOpen() && !moveInProgress"
+     aria-hidden="{{!isOpen()}}">
+    <p class="message">select aiplane type from drop down.</p>
+	<p  class="cursorchg suggestionChoice" ng-click="selectMatch($index)" role="option" id="{{::match.id}}" index="$index" match="match" ng-repeat="match in matches"><img src="img/airport.png" width="24px"/>[{{match.label}}] {{match.model.type_name}}</p>
+  	</div>
+</script>
+
+
+<script type="text/ng-template" id="customPopupTemplateAirlines.html">
+  	<div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     style="display: block;"
+     ng-show="isOpen() && !moveInProgress"
+     aria-hidden="{{!isOpen()}}">
+    <p class="message">select airline from drop down.</p>
+	<p  class="cursorchg suggestionChoice" ng-click="selectMatch($index)" role="option" id="{{::match.id}}" index="$index" match="match" ng-repeat="match in matches"><img src="img/airport.png" width="24px"/>[{{match.label}}/{{match.model.airline_icao_code}}] {{match.model.airline_name}}</p>
+  	</div>
+</script>
+
+
+<script type="text/ng-template" id="airlinePopover.html">
+        <div class="hoverAirlineHolder">
+        <div class="form-group">
+		  <div>
+		  		<div class="airportNameLbl">{{hoveredAirlineObject.airline_name}}</div>
+		  </div>
+        </div>
+		</div>
+    </script>
+
+<script type="text/ng-template" id="airplaneTypePopover.html">
+        <div class="hoverAirlineHolder">
+        <div class="form-group">
+		  <div>
+		  		<div class="airportNameLbl">{{hoveredAirplaneTypeObject.airplane_name}}</div>
+		  </div>
+        </div>
+		</div>
+    </script>
+    
+    
+	    <!-- Modal -->
+<script type="text/ng-template" id="airlineStats.html">
+        <div>
+            <div>
+                <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+                    <h4 class="modal-title">{{airlineObj.airline_iata_code}} airline statistics</h4>
+                </div>
+                <div class="modal-body airlineModalBody" ng-class="{'airlineModaWithStats' : !loadingStats && detailedStats.totalFlights > 0}">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="col-lg-12 col-md-12 col-sm-12 airlineLogoHolder" ng-if="logoAvailable">
+							<img src="{{logoSrc}}" class="airlineLogo" />
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="airportName">
+									{{airlineObj.airline_name}}
+								</div>
+								<div class="airportName">
+									{{airlineObj.airline_country}}
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<table class="table table-stripped">
+									<thead>
+										<th class="noBorders"></th>
+										<th class="noBorders"></th>
+									</thead>
+									<tbody>
+										<tr><td>IATA code </td><td>{{airlineObj.airline_iata_code}}</td></tr>
+										<tr><td>ICAO code </td><td>{{airlineObj.airline_icao_code}}</td></tr>
+										<tr><td>Callsign </td><td>{{airlineObj.airline_callsign}}</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<hr>
+						<div class="col-lg-12 col-md-12 col-sm-12" ng-show="loadingStats">
+							<div class="loader">Loading...</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12" ng-show="!loadingStats && detailedStats.totalFlights == 0">
+							<div class="alert alert-info">
+								<a ng-click="redirectToSignIn()" class="cursorchg">Be the first who travelled with this airline. Sign in and add flight to your account.</a>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12" ng-show="!loadingStats && detailedStats.totalFlights > 0">
+							<h4>Airline statistics</h4>
+							<table class="table table-stripped">
+									<thead>
+										<th class="noBorders"></th>
+										<th class="noBorders"></th>
+									</thead>
+									<tbody>
+										<tr><td>Total flights </td><td>{{detailedStats.totalFlights}}</td></tr>
+										<tr><td>Total users flown with {{airlineObj.airline_iata_code}} </td><td>{{users.length}}</td></tr>
+										<tr><td>Average rating </td>
+											<td><strong>{{roundRating(detailedStats.averageRating)}}</strong></td></tr>
+									</tbody>
+							</table>
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="col-lg-4 col-sm-12 col-md-12 singleStatsBoxHolder" ng-repeat="user in users">
+									<div class="singleStatsBox">
+										<div class="singleStatsBoxText">
+											Frequent Flyer on {{airlineObj.airline_iata_code}}
+										</div>
+										<div class="singleStatsProfileHolder">
+											<p>{{user.username}}</p>
+											<a class="cursorchg singleStatsProfileLink" ng-click="redirectToUser(user.username)">check profile</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div id="airline-map-routes" class="routesFromAirportMap">
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="modal-footer">
+					<btn type="button" class="btn btn-info" ng-click="cancel()"> Back to general stats</btn>
+                </div>
+            </div>
+
+        </div>
+    </script>
+    
+    
+	    <!-- Modal -->
+<script type="text/ng-template" id="airplaneTypeStats.html">
+        <div>
+            <div>
+                <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+                    <h4 class="modal-title">{{airplaneTypeObj.type_code}} Airplane Type Statistics</h4>
+                </div>
+                <div class="modal-body airlineModalBody" ng-class="{'airplaneTypeModalWithStats' : !loadingStats && detailedStats.totalFlights > 0}">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="col-lg-12 col-md-12 col-sm-12 airlineLogoHolder" ng-if="logoAvailable">
+							<small class="creditTxt">Powered by Planefinder</small>
+							<img src="{{logoSrc}}" class="airplaneTypeLogo" />
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12" ng-class="{'airplaneTypeNameLblHolder' : logoAvailable}">
+								<div class="airportName">
+									{{airplaneTypeObj.type_name}}
+								</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12" ng-show="loadingStats">
+							<div class="loader">Loading...</div>
+						</div>
+						<div class="airlineTypeAlertHolder col-lg-12 col-md-12 col-sm-12" ng-show="!loadingStats && detailedStats.totalFlights == 0">
+							<div class="alert alert-info">
+								<a ng-click="redirectToSignIn()" class="cursorchg">Be the first who travelled with this airline. Sign in and add flight to your account.</a>
+							</div>
+						</div>
+						<div class="airplaneTypeNameLblHolder col-lg-12 col-md-12 col-sm-12" ng-show="!loadingStats && detailedStats.totalFlights > 0">
+							<h4>Type statistics</h4>
+							<table class="table table-stripped">
+									<thead>
+										<th class="noBorders"></th>
+										<th class="noBorders"></th>
+									</thead>
+									<tbody>
+										<tr><td>Total flights </td><td>{{detailedStats.totalFlights}}</td></tr>
+										<tr><td>Average rating </td>
+											<td><strong>{{roundRating(detailedStats.averageRating)}}</strong></td></tr>
+									</tbody>
+							</table>
+							<h4 class="airplaneTypeNameLblHolder">Airports visited & Flown by user</h4>
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="col-lg-4 col-sm-12 col-md-12 singleStatsBoxHolder" ng-repeat="airport in airportsToShow">
+									<div class="singleStatsBoxBlue">
+										<div class="singleStatsBoxTextBlue">
+											Airport visited 
+										</div>
+										<div class="singleStatsProfileHolderBlue">
+											<p>{{airport.code}}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="col-lg-4 col-sm-12 col-md-12 singleStatsBoxHolder" ng-repeat="user in detailedStats.usersFlown">
+									<div class="singleStatsBox">
+										<div class="singleStatsBoxText">
+											Frequent Flyer 
+										</div>
+										<div class="singleStatsProfileHolder">
+											<p>{{user}}</p>
+											<a class="cursorchg singleStatsProfileLink" ng-click="redirectToUser(user)">check profile</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="modal-footer">
+					<btn type="button" class="btn btn-info" ng-click="cancel()"> Back to general stats</btn>
+                </div>
+            </div>
+
+        </div>
+    </script>

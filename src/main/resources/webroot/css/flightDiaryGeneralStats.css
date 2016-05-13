@@ -1,0 +1,149 @@
+.card_one_airline {
+	background-image: url("/img/airlines/QR.jpg");
+	background-position: 0px;
+}
+
+
+.card_two_airline {
+	background-image: url("/img/airlines/AK.jpg");
+	background-position: -40px;
+}
+
+
+.card_three_airline {
+	background-image: url("/img/airlines/AA.jpg");
+	background-position: 0px;
+}
+
+
+.card_four_airline {
+	background-image: url("/img/airlines/TK.jpg");
+	background-position: -10px;
+}
+
+
+.card_one_airplane {
+	background-image: url("/img/airplanes/388.jpg");
+	background-position: -24px -81px;
+}
+
+
+.card_two_airplane {
+	background-image: url("/img/airplanes/738.jpg");
+	background-position: -120px;
+}
+
+
+.card_three_airplane {
+	background-image: url("/img/airplanes/E90.jpg");
+	background-position: -30px;
+}
+
+
+.card_four_airplane {
+	background-image: url("/img/airplanes/SSJ.jpg");
+	background-position: 0px;
+}
+
+.chartHolder {
+	min-height: 350px;
+	max-height: 350px;
+}
+
+.barChartHolder {
+	padding-left: 40px;
+	padding-right: 40px;
+	margin-top: 50px;
+}
+
+.hoverAirlineHolder {
+	min-height: 30px;
+	max-height: 50px;
+	width: 200px;
+}
+
+
+.airlineTabHeader {
+	color: blue;
+	font-size: 22px;
+}
+
+.airplaneTypeTabHeader {
+	color: green;
+	font-size: 22px;
+}
+
+.tabHolder {
+	margin-top: 50px;
+}
+
+.full-width-btn {
+	width: 100%;
+	border-radius: 0px;
+}
+
+.full-width-btn-holder {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.airlineSrch {
+	background-color: lightblue;
+	height: 150px;
+    margin-top: 0px;
+    padding-top: 50px;
+    margin-left: 0px;
+}
+
+.airplaneSrch {
+	background-color: lightgreen;
+	height: 150px;
+    margin-top: 0px;
+    padding-top: 50px;
+    margin-left: 0px;
+}
+
+.airlineLogoHolder {
+	max-height: 80px;
+    text-align: center;
+}
+
+.airlineLogo {
+	max-height: 80px;
+}
+
+.airplaneTypeLogo {
+	max-height: 120px;
+}
+
+.creditTxt {
+	position: absolute;
+	top: 3px;
+	left: 5px;
+	color: lightgray;
+}
+
+.airlineModalBody {
+	min-height: 400px;
+}
+
+.airplaneTypeModalWithStats {
+	min-height: 680px;
+}
+
+
+.airplaneTypeNameLblHolder {
+	margin-top: 40px;
+}
+
+.airlineModaWithStats {
+	min-height: 900px !important;
+}
+
+.airlineTypeAlertHolder {
+	margin-top: 80px;
+}
+
+.repositionPercentText {
+	margin-top: -40px !important;
+}

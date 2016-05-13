@@ -1,0 +1,270 @@
+<div ng-include="'topNavigation.html'"></div>
+
+<div class="container marginedContainer">
+	<h2>Airport statistics</h2>
+	
+	<div class="col-lg-12 col-md-12 col-sm-12" ng-if="loading && !dataExists">
+		<div class="loader">Loading...</div>
+	</div>
+	
+	<div class="col-lg-12 col-md-12 col-sm-12 searchHolder">
+		<div class="col-lg-6 col-md-12 col-sm-12 searchBoxTitle">
+			Search over 8 000 airports from our database for more detailed stats
+		</div>
+		<div class="col-lg-6 col-md-12 col-sm-12 searchBoxTitleGreen">
+			{{stats.totalUsedAirports}} airports visited by users
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 typeahead-demo editBoxSearchHolder">
+			<input type="text" ng-model="airportSearch" placeholder="Type airport name, location or code"
+								ng-change="fetchAutoSuggestionSearch()"
+								uib-typeahead="airportFrom as airportFrom.iata_code for airportFrom in autoSuggestionAirports"
+								typeahead-popup-template-url="customPopupTemplate.html"
+								class="airportInput">
+		</div>
+	</div>
+
+	<div class="col-lg-12 col-sm-12 col-md-12" ng-if="dataExists">
+		<div class="col-lg-6 col-md-12 col-sm-12 regionHolder">
+			<div id="map-holder" class="mapHolder">
+				<div class="loader">Loading...</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-sm-12 col-md-12">
+			<h4 class="pull-right">Airports visited by region</h4>
+			<div class="regionHolder">
+				<div class="extendedHolder" ng-repeat="region in regionGraph">
+					<div class="progress" data-toggle="tooltip" title="{{region.name}} {{region.value}} %">
+						<div class="progress-bar" role="progressbar"
+							aria-valuenow="{{region.value}}" aria-valuemin="0"
+							aria-valuemax="{{stats.totalUsedAirports}}"
+							ng-style="{'width': '{{region.value}}%'}">
+							<span class="regionText" ng-if="region.value >= 30">{{region.name}} {{region.value}} %</span>
+							<span class="regionTextRight pull-right" ng-if="region.value < 30">{{region.name}} {{region.value}} %</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-lg-12 col-md-12 col-sm-12 regionHolder tableHolder" ng-if="dataExists">
+			<div class="col-lg-6 col-sm-12 col-md-12">
+				<h4 class="pull-left">Most departures by airport</h4>
+				<table class="table table-bordered blue-table-striped table-striped">
+					<thead>
+						<th>
+							<p>Airport</p>
+						</th>
+						<th>
+							<p>Departures</p>
+						</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="airport in depAirports">
+							<td>
+								<a class="cursorchg" ng-click="loadAndOpenAirportData(airport.code)" popover-placement="right"
+																uib-popover-template="dynamicPopoverAirport.templateUrl"
+																popover-title="{{airport.code}}"
+																popover-trigger="mouseenter" 
+																ng-mouseenter="hoveredAirport(airport.code)">
+									{{airport.code}}
+								</a>
+							</td>
+							<td>
+								<p>{{airport.value}}</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-lg-6 col-sm-12 col-md-12">
+				<h4 class="pull-right">Most arrivals by airport</h4>
+				<table class="table table-bordered green-table-striped table-striped">
+					<thead>
+						<th>
+							<p>Airport</p>
+						</th>
+						<th>
+							<p>Departures</p>
+						</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="airport in arrAirports">
+							<td>
+								<a class="cursorchg" ng-click="loadAndOpenAirportData(airport.code)" popover-placement="right"
+																uib-popover-template="dynamicPopoverAirport.templateUrl"
+																popover-title="{{airport.code}}"
+																popover-trigger="mouseenter" 
+																ng-mouseenter="hoveredAirport(airport.code)">
+									{{airport.code}}
+								</a>
+							</td>
+							<td>
+								<p>{{airport.value}}</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="col-lg-12 col-md-12 col-sm-12 regionHolder suggestHolder">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<h4> Suggested airports</h4>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+				<div class="cardContent card_one">
+					<div class="pull-right airportIdHolder">
+						<a class="airportIdCode cursorchg" ng-click="loadAndOpenAirportData('ATL')">ATL</a>
+						<p class="airportIdName">Atlanta Hartsfield</p>
+					</div>
+					<p class="airportTypeLbl">The world's busiest airport</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+				<div class="cardContent card_two">
+					<div class="pull-right airportIdHolder">
+						<a class="airportIdCode cursorchg" ng-click="loadAndOpenAirportData('DXB')">DXB</a>
+						<p class="airportIdName">Dubai Intl</p>
+					</div>
+					<p class="airportTypeLbl">The world's biggest hub</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+				<div class="cardContent card_three">
+					<div class="pull-right airportIdHolder">
+						<a class="airportIdCode cursorchg" ng-click="loadAndOpenAirportData('AMS')">AMS</a>
+						<p class="airportIdName">Amsterdam Schiphol</p>
+					</div>
+					<p class="airportTypeLbl">The best airport in the world</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12 suggestedAirportsCard">
+				<div class="cardContent card_four">
+					<div class="pull-right airportIdHolder">
+						<a class="airportIdCode cursorchg" ng-click="loadAndOpenAirportData('BEG')">BEG</a>
+						<p class="airportIdName">Belgrade N.Tesla</p>
+					</div>
+					<p class="airportTypeLbl">Passenger's choice</p>
+				</div>
+			</div>
+		</div>
+
+<div ng-include="'mainNavigation.html'"></div>
+
+</div>
+
+
+	<script type="text/ng-template" id="airportPopover.html">
+        <div class="hoverAirportHolder">
+        <div class="form-group">
+          <div ng-if="retrievingHovered">
+			<div class="loader">Loading...</div>
+		  </div>
+		  <div ng-if"!retrievingHovered">
+		  		<div class="airportNameLbl">{{hoveredAirportObject.airport_name}}</div>
+				<div class="additionalNameLbl">Location: {{hoveredAirportObject.airport_location}}</div>
+				<div class="additionalNameLbl">Timezone: {{hoveredAirportObject.area_timezone}}</div>
+		  </div>
+        </div>
+		</div>
+    </script>
+    
+    <script type="text/ng-template" id="customPopupTemplate.html">
+  	<div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     style="display: block;"
+     ng-show="isOpen() && !moveInProgress"
+     aria-hidden="{{!isOpen()}}">
+    <p class="message">select airport from drop down.</p>
+	<p  class="cursorchg suggestionChoice" ng-click="selectMatch($index)" role="option" id="{{::match.id}}" index="$index" match="match" ng-repeat="match in matches"><img src="img/airport.png" width="24px"/>{{match.model.airport_name}} [{{match.label}}]</p>
+  	</div>
+	</script>
+	
+	
+	    <!-- Modal -->
+<script type="text/ng-template" id="airportStats.html">
+        <div>
+            <div>
+                <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{airportObject.iata_code}} {{airportObject.airport_name}}</h4>
+                </div>
+                <div class="modal-body" 
+					ng-class="{'bodyWithoutMap' : !loadingSingleStats && detailedAirportData.visited == 0, 
+							'bodyWithMap' : !loadingSingleStats && detailedAirportData.visited > 0}">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div id="airport-location-map" class="airportLocationMap">
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 airportPersonalIdCard"> 
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="airportName">
+									{{airportObject.airport_name}}
+								</div>
+								<div class="airportName">
+									{{airportObject.airport_location}}
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<table class="table table-stripped">
+									<thead>
+										<th class="noBorders"></th>
+										<th class="noBorders"></th>
+									</thead>
+									<tbody>
+										<tr><td>IATA code </td><td>{{airportObject.iata_code}}</td></tr>
+										<tr><td>ICAO code </td><td>{{airportObject.icao_code}}</td></tr>
+										<tr><td>Timezone </td><td>{{airportObject.area_timezone}}</td></tr>
+										<tr><td>UTC offset </td><td>{{airportObject.utc_offset}}</td></tr>
+										<tr><td>Altitude </td><td>{{airportObject.altitude}}m</td></tr>
+									</tbody>
+								</table>
+							</div>
+							
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12" ng-show="!loadingSingleStats && detailedAirportData.visited == 0">
+							<div class="alert alert-info">
+								<a ng-click="redirectToSignIn()" class="cursorchg">Be the first who visited this airport. Sign in and add flight to your account.</a>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12" ng-if="!loadingSingleStats && detailedAirportData.visited > 0"> 
+							<div class="col-lg-12 col-md-12 col-sm-12" ng-show="!loadingSingleStats && detailedAirportData.visited > 0">
+								<div class="col-lg-4 col-sm-12 col-md-12 singleStatsBoxHolder">
+									<div class="singleStatsBox">
+										<div class="singleStatsBoxText">
+											Times visited
+										</div>
+										<div class="singleStatsBoxValue">
+											{{detailedAirportData.visited}}	
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-sm-12 col-md-12 singleStatsBoxHolder" ng-repeat="user in usersToShow">
+									<div class="singleStatsBox">
+										<div class="singleStatsBoxText">
+											Frequent Flyer #1
+										</div>
+										<div class="singleStatsProfileHolder">
+											<p>{{user.username}}</p>
+											<a class="cursorchg singleStatsProfileLink" ng-click="redirectToUser(user.username)">check profile</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12 col-sm-12 col-md-12" ng-if="!loadingSingleStats && detailedAirportData.visited > 0">
+							<h4>Routes from the airport</h4>
+							<div id="routes-from-airport-map" class="routesFromAirportMap">
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="modal-footer">
+					<btn type="button" class="btn btn-info" ng-click="cancel()"> Back to airport stats</btn>
+                </div>
+            </div>
+
+        </div>
+    </script>

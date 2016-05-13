@@ -1,0 +1,256 @@
+<div ng-include="'topNavigation.html'"></div>
+
+<script type="text/ng-template" id="customPopupTemplate.html">
+  	<div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     style="display: block;"
+     ng-show="isOpen() && !moveInProgress"
+     aria-hidden="{{!isOpen()}}">
+    <p class="message">select airport from drop down.</p>
+	<p  class="cursorchg suggestionChoice" ng-click="selectMatch($index)" role="option" id="{{::match.id}}" index="$index" match="match" ng-repeat="match in matches"><img src="img/airport.png" width="24px"/>{{match.model.airport_name}} [{{match.label}}]</p>
+  	</div>
+</script>
+
+
+<script type="text/ng-template" id="customPopupTemplateAirplanes.html">
+  	<div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     style="display: block;"
+     ng-show="isOpen() && !moveInProgress"
+     aria-hidden="{{!isOpen()}}">
+    <p class="message">select aiplane type from drop down.</p>
+	<p  class="cursorchg suggestionChoice" ng-click="selectMatch($index)" role="option" id="{{::match.id}}" index="$index" match="match" ng-repeat="match in matches"><img src="img/airport.png" width="24px"/>[{{match.label}}] {{match.model.type_name}}</p>
+  	</div>
+</script>
+
+
+<script type="text/ng-template" id="customPopupTemplateAirlines.html">
+  	<div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     style="display: block;"
+     ng-show="isOpen() && !moveInProgress"
+     aria-hidden="{{!isOpen()}}">
+    <p class="message">select airline from drop down.</p>
+	<p  class="cursorchg suggestionChoice" ng-click="selectMatch($index)" role="option" id="{{::match.id}}" index="$index" match="match" ng-repeat="match in matches"><img src="img/airport.png" width="24px"/>[{{match.label}}/{{match.model.airline_icao_code}}] {{match.model.airline_name}}</p>
+  	</div>
+</script>
+
+<script type="text/ng-template" id="customTemplate.html">
+  	<a>
+      <img ng-src="https://cdn4.iconfinder.com/data/icons/dot/128/air_plane_airport.png" width="16">
+      <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+  	</a>
+	</script>
+
+
+<div class="container profile-container">
+	<div class="col-lg-12">
+		<h3 ng-show="isNew">New flight</h3>
+		<h3 ng-show="!isNew">Edit existing flight</h3>
+		<hr>
+		<br>
+		<div class="newFlightContainer">
+			<div class="leftSideNewFlightContainer">
+				<div class="leftSideLogoHolder">
+					<img src="img/airplane-earth.png" class="leftSideLogo"></img> <img
+						src="img/barcode.gif" class="leftBarCode"></img>
+				</div>
+				<div class="leftSideMainContent top20">
+					<div class="extendedAirport">
+						<div class="tabHead">
+							<img class="tabHeadImgDep" id="departureBlack"
+								src="img/departureBlack.png" />
+							<div class="typeahead-demo">
+								<input type="text" ng-disabled="!isNew" ng-model="airportFrom"
+									placeholder="Enter code, name or city"
+									ng-change="fetchAutoSuggestionFrom()"
+									uib-typeahead="airportFrom as airportFrom.iata_code for airportFrom in autoSuggestionFrom"
+									typeahead-popup-template-url="customPopupTemplate.html"
+									class="airportInputField">
+
+							</div>
+						</div>
+						<p class="airportNameLabel">{{airportFrom.airport_name}}</p>
+					</div>
+					<div class="extendedAirport">
+						<div class="tabHead">
+							<img class="tabHeadImgArr" id="arrivalBlack"
+								src="img/arrivalBlack.png" />
+							<div class="typeahead-demo">
+								<input type="text" ng-disabled="!isNew" ng-model="airportTo"
+									placeholder="Enter code, name or city"
+									ng-change="fetchAutoSuggestionTo()"
+									uib-typeahead="airportTo as airportTo.iata_code for airportTo in autoSuggestionTo"
+									typeahead-popup-template-url="customPopupTemplate.html"
+									class="airportInputField">
+							</div>
+						</div>
+						<p class="airportNameLabel">{{airportTo.airport_name}}</p>
+					</div>
+				</div>
+				<div class="leftSideAddContent top20">
+					<p class="input-group">
+						<span class="dateBtn input-group-btn"> <img
+							class="clockIcon" src="img/clock.png" />
+						</span> <input type="text" class="form-control dateInput"
+							ng-click="open2()" uib-datepicker-popup ng-model="departDate"
+							is-open="popup2.opened" datepicker-options="dateOptions"
+							ng-required="true" close-text="Close" />
+
+					</p>
+					<div class="tabHead airlineTypeHolder">
+						<div class="tabHeadImgAirHolder">
+							<img class="tabHeadImgAir" id="departureBlack"
+								src="img/airline-seat.png" />
+						</div>
+						<div class="typeahead-demo-middle">
+							<input type="text" ng-model="airline" placeholder="Airline"
+								ng-change="fetchAutoSuggestionAirlines()"
+								uib-typeahead="airline as airline.airline_iata_code for airline in autoSuggestionAirlines"
+								typeahead-popup-template-url="customPopupTemplateAirlines.html"
+								class="airlineTypeInput">
+						</div>
+					</div>
+				</div>
+				<div class="leftSideLastContent">
+					<uib-timepicker ng-model="mytime" ng-change="changed()"
+						hour-step="1" minute-step="5" show-meridian="false"></uib-timepicker>
+					<div class="tabHead airplaneTypeHolder">
+						<div class="tabHeadImgAirHolder">
+							<img class="tabHeadImgAir" id="departureBlack"
+								src="img/airplane.png" />
+						</div>
+						<div class="typeahead-demo-small">
+							<input type="text" ng-model="airplaneType" placeholder="Airplane"
+								ng-change="fetchAutoSuggestionAirplaneTypes()"
+								uib-typeahead="airplaneType as airplaneType.type_code for airplaneType in autoSuggestionAirplaneTypes"
+								typeahead-popup-template-url="customPopupTemplateAirplanes.html"
+								class="airplaneTypeInput">
+						</div>
+					</div>
+				</div>
+				<div class="sampleBoardingPassCode">
+					<p class="codeLabel">
+						<strong style="color: red;">RS4DE</strong>1405199028141990
+					</p>
+				</div>
+				<div class="classSelectionHolder">
+					<btn class="btn classBtn" ng-click="setClass(0)"
+						ng-class="{activeClassBtn: newFlightObj.flight_class == 0}">Economy</btn>
+					<btn class="btn classBtn" ng-click="setClass(1)"
+						ng-class="{activeClassBtn: newFlightObj.flight_class == 1}">Business</btn>
+					<btn class="btn classBtn" ng-click="setClass(2)"
+						ng-class="{activeClassBtn: newFlightObj.flight_class == 2}">First</btn>
+				</div>
+				<div class="purposeSelectionHolder">
+					<btn class="btn classBtn" ng-click="setPurpose(0)"
+						ng-class="{activeClassBtn: newFlightObj.purpose == 0}">Leasure</btn>
+					<btn class="btn classBtn" ng-click="setPurpose(1)"
+						ng-class="{activeClassBtn: newFlightObj.purpose == 1}">Business</btn>
+					<btn class="btn classBtn" ng-click="setPurpose(2)"
+						style="width:100px;"
+						ng-class="{activeClassBtn: newFlightObj.purpose == 2}">Family
+					visit</btn>
+				</div>
+			</div>
+			<div class="rightSideNewFlightContainer">
+				<div class="ticketSourceHolder">
+					<p class="experienceLabel">TICKET SOURCE</p>
+					<btn class="btn classBtn sourceBtn" ng-click="setSource('airline')"
+						ng-class="{activeClassBtn: newFlightObj.ticket_source == 'airline'}">Airline</btn>
+					<btn class="btn classBtn sourceBtn" ng-click="setSource('agent')"
+						ng-class="{activeClassBtn: newFlightObj.ticket_source == 'agent'}">Travel
+					agent</btn>
+				</div>
+				<div class="flightRatingHolder">
+					<p class="experienceLabel">OVERALL EXPERIENCE</p>
+					<uib-rating class="ratingStars" ng-model="newFlightObj.rating"
+						max="5" data-readonly="isReadonly" on-hover="hoveringOver(value)"
+						on-leave="overStar = null"
+						titles="['Not satisfied at all','two','three']"
+						aria-labelledby="default-rating"></uib-rating>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-12 lowerCommandHolder">
+		<btn ng-show="isNew" class="btn btn-default pull-right addFlightBtn"
+			ng-click="addFlight()"> <img class="gateIcon"
+			src="img/gate_icon.png"></img>
+		<div class="addFlightLabel">Add a flight</div>
+		</btn>
+		<btn ng-show="!isNew" class="btn btn-default pull-right addFlightBtn"
+			ng-click="saveChanges()"> <img class="gateIcon"
+			src="img/gate_icon.png"></img>
+		<div class="addFlightLabel">Save changes</div>
+		</btn>
+	</div>
+</div>
+
+<!-- Modal -->
+<script type="text/ng-template" id="flightAddedModal.html">
+        <div>
+            <div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Flight added</h4>
+                </div>
+                <div class="modal-body">
+                    <strong>You successfully added flight to your profile!</strong><br><br>
+					<table class="table table-striped">
+						<thead>
+							<tr style="background-image: url('img/metal_texture.jpg');">
+								<th class="flightTableCellHeader">from</th>
+								<th class="flightTableCellHeader">to</th>
+								<th class="flightTableCellHeader">distance (km)</th>
+								<th class="flightTableCellHeader">
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="flightTableCell">{{flightAdded.flight.departure}}</td>
+								<td class="flightTableCell">{{flightAdded.flight.arrival}}</td>
+								<td class="flightTableCell">{{distance}}</td>
+								<td class="flightTableCell flightTableIcon"><img style="width: 50px;" src="img/icon_landed.gif"></img></td>
+							<tr>
+						</tbody>
+					</table>
+					<br>
+					<div ng-show="showUsers.length == 0">
+						<p>You are the first to travel on this route!</p>
+					</div>
+					<p ng-show="showUsers.length > 0">Check out other users travelling this route!</p>
+					<div ng-show="showUsers.length > 0" style="background-image: url('img/metal_texture.jpg');">
+						<div ng-repeat="user in showUsers" class="userAddedFlight">
+							<a class="btn btn-default userAddedFlightButton" href="/">{{user.username}}</a> added it on {{user.timeAdded}}
+						</div>
+					</div>
+                </div>
+                <div class="modal-footer">
+                    <btn type="button" class="btn btn-primary" ng-click="redirect()"><span class="glyphicon glyphicon-user"></span> Back to Profile page</btn>
+					<btn type="button" class="btn btn-success" ng-click="addReturnFlight()"><span class="glyphicon glyphicon-resize-full"></span> Add a return flight</btn>
+					<btn type="button" class="btn btn-info" ng-click="addNewFlight()"><span class="glyphicon glyphicon-plus"></span> Add a new flight</btn>
+                </div>
+            </div>
+
+        </div>
+    </script>
+    
+    
+    <!-- Modal -->
+<script type="text/ng-template" id="errorModal.html">
+        <div>
+            <div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Data missing</h4>
+                </div>
+                <div class="modal-body">
+                    <strong>Oooooops!</strong></br>
+					{{msg}}
+                </div>
+                <div class="modal-footer">
+					<btn type="button" class="btn btn-info" ng-click="cancel()"> Back to check in</btn>
+                </div>
+            </div>
+
+        </div>
+    </script>

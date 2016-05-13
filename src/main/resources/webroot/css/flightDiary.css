@@ -1,0 +1,319 @@
+body {
+	margin-top: 0px !important;
+}
+
+@font-face {
+	font-family: 'digital';
+	src: url('../fonts/digital-7.ttf');
+}
+
+.timetableTab {
+	background: black;
+}
+
+.mapHolder {
+	min-height: 500px;
+	border-radius: 6px;
+	padding: 8px;
+	border: 1px solid blue;
+} 
+
+.digFont {
+	font-family: 'digital';
+	font-size: 20px;
+	line-height: 1;
+	color: green;
+}
+
+.glyphicon-star {
+	color: green !important;
+}
+
+.profile-container {
+	margin-top: 50px;
+}
+
+.lg-command {
+	min-height: 200px !important;
+	padding: 60px !important;
+}
+
+.right-link {
+	margin-top: 70px;
+	color: white !important;
+}
+
+.right-link:HOVER {
+	color: blue !important;
+}
+
+.homeBox {
+	border: 1px solid black;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.75);
+	color: #0033cc;
+}
+
+.base-container {
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.85);
+}
+
+.regHolder {
+	border: 1px solid gray;
+	border-radius: 5px;
+	background: white;
+	z-index: 1000;
+}
+
+.luggage-tags {
+	position: absolute;
+	bottom: 50px;
+	right: 0px;
+}
+
+@media screen and (max-width: 600px) {
+	.luggage-tags {
+		display: none;
+	}
+}
+
+.logoPic {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.topLogo {
+	width: 150px !important;
+	height: 150px !important;
+}
+
+.navbar-top-diary {
+	background-color: white !important;
+	height: 150px !important;
+	border: none !important;
+	margin-bottom: 0px !important;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.navbar-top-diary-header {
+	padding-top: 0px !important;
+}
+
+.alertHolder {
+	margin-top: 50px;
+}
+
+.alertHolderReg {
+	margin-left: 15px;
+	margin-right: 15px;
+	text-align: center;
+}
+
+.quickAccessBoxHolder {
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.quickAccessBox {
+	min-height: 100px;
+	width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+	.mainCont {
+		margin-top: 100px;
+	}
+	.homepageimg {
+		max-height: 600px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.mainCont {
+		margin-top: 50px;
+	}
+	.homepageimg {
+		max-height: 400px;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.imgHomeHolder {
+		text-align: center !important;
+	}
+}
+
+.hintsHolder {
+	padding: 10px;
+}
+
+.allHints {
+	margin-top: 50px;
+}
+
+.imgHomeHolder {
+	text-align: right;
+}
+
+.quickAccessBtns {
+	width: 100% !important;
+	color: white;
+}
+
+.shadeOne {
+	background-color: #ccffcc;
+	color: black;
+}
+
+.shadeOne:HOVER {
+	background-color: #3399ff;
+	color: white;
+}
+
+.shadeTwo {
+	background-color: #ccffff;
+	color: black;
+}
+
+.shadeTwo:HOVER {
+	background-color: #3399ff;
+	color: white;
+}
+
+.shadeThree {
+	background-color: #ccffef;
+	color: black;
+}
+
+.shadeThree:HOVER {
+	background-color: #3399ff;
+	color: white;
+}
+
+
+.publicProfileCardsHolder {
+	margin-top: 50px;
+}
+
+.publicProfileCard {
+	padding: 10px;
+}
+
+.publicProfileCardContent {
+	border: 2px solid lightblue;
+	height: 100px;
+}
+
+.publicProfileCardContentHeader {
+	position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80%;
+    height: 30px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 2px;
+    background-color: lightblue;
+}
+
+.publicProfileCardContentValue {
+	position: absolute;
+	top: 50px;
+	width: 100%;
+	font-size: 32px;
+	text-align: center;
+	color: lightblue;
+}
+
+.userCardHolder {
+	padding: 10px;
+}
+
+.userCardHolderTotal {
+	padding: 10px;
+}
+
+.userCardTotal {
+	border: 2px solid lightgreen;
+	background-color: lightgreen;
+	height: 200px;
+	padding: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.userCard {
+	border: 2px solid lightblue;
+	height: 200px;
+	padding: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+.userCardTopContent {
+	height: 95px;
+	border-bottom: 1px solid lightgray;
+	text-align: center;
+	width: 100%;
+	padding-top: 30px;
+    font-size: 32px;
+}
+
+.userCardTopContentTotal {
+	height: 95px;
+	border-bottom: 1px solid black;
+	text-align: center;
+	width: 100%;
+	padding-top: 30px;
+    font-size: 32px;
+    color: gray;
+    padding-left: 50px;
+}
+
+.userCardTopLink {
+	cursor: pointer;
+}
+
+.userCardBottomContent {
+	height: 95px;
+	text-align: center;
+	width: 100%;
+	padding-top: 30px;
+    font-size: 32px;
+    color: black;
+}
+
+.userCardBottomContentTotal {
+	height: 95px;
+	text-align: center;
+	width: 100%;
+	padding-top: 30px;
+    font-size: 32px;
+    color: gray;
+    padding-left: 50px;
+}
+
+.totalUsersIcon {
+	max-height: 120px;
+	position: absolute;
+	left: 10px;
+    top: 15px;
+}
+
+.centeredAlert {
+	margin-top: 80px;
+	text-align: center;
+}
+
+.userGlyph {
+	margin-left: 20px;
+	margin-right: 20px;
+}

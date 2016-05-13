@@ -1,0 +1,101 @@
+.mapHolder {
+	min-height: 500px;
+	border-radius: 6px;
+	padding: 8px;
+	border: 1px solid blue;
+}
+.boxHolder {
+	margin-top: 50px;
+}
+.regionalDistributionHolder {
+	min-height: 250px;
+	margin-top: 50px;
+}
+
+.pieChartHolder {
+	height: 400px;
+	margin-top: -10px;
+}
+
+.chartHolder {
+	min-height: 350px;
+	max-height: 350px;
+}
+.barChartHolder {
+	padding-left: 40px;
+	padding-right: 40px;
+	margin-top: 50px;
+}
+.progress {
+	height: 70px !important;
+}
+.progress-bar {
+	padding-top: 10px !important;
+}
+
+.statsStars {
+	font-size: 40px !important;
+	position: absolute;
+	top: 150px;
+	left: 100px;
+}
+.purposeFont {
+	font-size: 50px;
+}
+
+.purposes {
+	margin-top: 30px;
+}
+
+.purposes > .progress {
+	height: 70px !important;
+}
+
+.purposeHolder {
+	border: 1px solid blue;
+	border-radius: 10px;
+	min-height: 350px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+.purposeTitleBox {
+	position: relative;
+    left: 40%;
+}
+
+.rawChart {
+	height: 350px;
+}
+
+.jqplot-target {
+	height: 360px !important;
+}
+
+.regionalPieChartHolder {
+	margin-top: 30px;
+}
+
+.digClock {
+	width: 100%;
+	font-family: 'dot_digital';
+	font-size: 30px;
+	background-color: black;
+	color: green;
+	text-align: center;
+	font-weight: bold;
+}
+
+.timeDistributionHolder {
+	padding: 0px !important;
+}
+
+.timeValueHolder {
+	width: 100%;
+	text-align: center;
+	font-size: 32px;
+	font-family: 'dot_digital';
+	font-weight: bold;
+	color: blue;
+	margin-top: 30px;
+}

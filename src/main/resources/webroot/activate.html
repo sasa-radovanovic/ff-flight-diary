@@ -1,0 +1,25 @@
+
+
+<div class="full">
+	<div class="pic2">
+
+		<div class="container base-container">
+
+			<div class="alert alert-warning" ng-show="loading">
+				<strong>Loading...</strong>
+			</div>
+
+
+			<div class="alert alert-success" ng-show="!loading && success">
+				Welcome <strong>{{activatedUser.username}}</strong>, your account associated with mail address <strong>{{activatedUser.mail}}</strong> has been successfully activated. 
+				<a href="/private/#"><strong>Start creating your own diary right away!<strong/><a>
+			</div>
+
+			<div class="alert alert-danger" ng-show="!loading && !success">
+				<strong>Error occured!</strong>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-include="'mainNavigation.html'"></div>
