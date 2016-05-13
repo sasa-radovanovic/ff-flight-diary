@@ -115,7 +115,7 @@ Prototype Pattern |  |
 
 ### Use cases and printscreens
 
-Application-go-through is available at the following link. You can find all screens available, use cases, and detailed description.
+Application-go-through is available at the following link. You can find all screens available, use cases, and detailed description on the [following link](http://sasa-radovanovic.github.io/).
 
 ### Tests
 
