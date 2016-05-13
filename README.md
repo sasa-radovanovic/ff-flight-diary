@@ -1,6 +1,8 @@
 # ff-flight-diary (Frequent Flyers Flight Diary)
 ## Personal Flight Diary to store your flight history and compare worldwide data
 
+[Wireframes/pages - how it looks like when deployed](http://sasa-radovanovic.github.io/)
+
 First of all - **this is not commercial application**, but it's a good starting point. This web service allows users to register and store their flights. User can review his/her personal statistics based on various parameters. Public part of the service provides statistics based on entire system.
 
 ### Motivation
